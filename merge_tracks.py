@@ -24,7 +24,9 @@ gpx_segment = gpxpy.gpx.GPXTrackSegment()
 gpx_track.segments.append(gpx_segment)
 
 append_points('1.gpx',gpx_segment)
+append_points('2.gpx',gpx_segment)
 
+gpx_segment.points = sorted(gpx_segment.points, key=lambda p: p.time)
 
 with open('somefile.gpx', 'w') as the_file:
     the_file.write(gpx.to_xml())
